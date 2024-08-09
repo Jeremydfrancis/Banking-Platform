@@ -1,6 +1,6 @@
 "use server";
 
-import { ID } from "node-appwrite";
+import { ID, /* Query */ } from "node-appwrite";
 import { createAdminClient } from "../appwrite";
 import { parseStringify } from "../utils";
 
@@ -41,7 +41,7 @@ export const getTransactionsByBankId = async ({
     const senderTransactions = await database.listDocuments(
       DATABASE_ID!,
       TRANSACTION_COLLECTION_ID!
-      // [Query.equal("senderBankId", bankId)]
+       /* [Query.equal("senderBankId", bankId)] */
     );
 
     
@@ -49,7 +49,7 @@ export const getTransactionsByBankId = async ({
     const receiverTransactions = await database.listDocuments(
       DATABASE_ID!,
       TRANSACTION_COLLECTION_ID!
-      // [Query.equal("receiverBankId", bankId)]
+      /* [Query.equal("receiverBankId", bankId)] */
     );
 
 

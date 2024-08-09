@@ -1,10 +1,9 @@
 import Link from 'next/link'
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs" 
 import { BankTabItem } from './BankTabItem'
-import BankInfo from './BankInfo'
-import TransactionsTable from './TransactionsTable'
-import { Pagination } from './Pagination'
-
+ import TransactionsTable from './TransactionsTable'
+import { Pagination } from './Pagination'   
+import BankInfo from './BankInfo';
 const RecentTransactions = ({
   accounts,
   transactions = [],
@@ -33,15 +32,15 @@ const RecentTransactions = ({
         </Link>
       </header>
 
-      <Tabs defaultValue={appwriteItemId} className="w-full">
+       <Tabs defaultValue={appwriteItemId} className="w-full">
       <TabsList className="recent-transactions-tablist">
           {accounts.map((account: Account) => (
             <TabsTrigger key={account.id} value={account.appwriteItemId}>
-              <BankTabItem
+               <BankTabItem
                 key={account.id}
                 account={account}
                 appwriteItemId={appwriteItemId}
-              />
+              /> 
             </TabsTrigger>
           ))}
         </TabsList>
@@ -52,23 +51,23 @@ const RecentTransactions = ({
             key={account.id}
             className="space-y-4"
           >
-            <BankInfo 
+             <BankInfo 
               account={account}
               appwriteItemId={appwriteItemId}
               type="full"
-            />
+            /> 
 
-            <TransactionsTable transactions={currentTransactions} />
+          <TransactionsTable transactions={currentTransactions} /> 
             
 
             {totalPages > 1 && (
               <div className="my-4 w-full">
-                <Pagination totalPages={totalPages} page={page} />
+                 <Pagination totalPages={totalPages} page={page} />
               </div>
             )}
           </TabsContent>
         ))}
-      </Tabs>
+      </Tabs> 
     </section>
   )
 }
