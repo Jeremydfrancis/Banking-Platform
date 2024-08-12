@@ -31,7 +31,7 @@ const formSchema = z.object({
   name: z.string().min(4, "Transfer note is too short"),
   amount: z.string().min(4, "Amount is too short"),
   senderBank: z.string().min(4, "Please select a valid bank account"),
-  shareableId: z.string().min(8, "Please select a valid shareable Id"),
+  shareableId: z.string().min(8, "Please select a valid sharable Id"),
 });
 
 const PaymentTransferForm = ({ accounts }: PaymentTransferFormProps) => {
@@ -195,7 +195,7 @@ const PaymentTransferForm = ({ accounts }: PaymentTransferFormProps) => {
             <FormItem className="border-t border-gray-200">
               <div className="payment-transfer_form-item pb-5 pt-6">
                 <FormLabel className="text-14 w-full max-w-[280px] font-medium text-gray-700">
-                  Receiver&apos;s Plaid Shareable Id
+                  Receiver&apos;s Plaid Sharable Id
                 </FormLabel>
                 <div className="flex w-full flex-col">
                   <FormControl>

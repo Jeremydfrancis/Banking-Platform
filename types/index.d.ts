@@ -7,7 +7,6 @@ declare type SearchParamProps = {
 
 // ========================================
 
-
 declare type SignUpParams = {
   firstName: string;
   lastName: string;
@@ -212,7 +211,7 @@ declare interface TotalBalanceBoxProps {
 
 declare interface FooterProps {
   user: User;
-  type?: "desktop" | "mobile";
+  type?: 'mobile' | 'desktop'
 }
 
 declare interface RightSidebarProps {

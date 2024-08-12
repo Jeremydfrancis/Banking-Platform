@@ -61,5 +61,3 @@ const Copy = ({ title }: { title: string }) => {
     </Button>
   );
 };
-
-export default Copy;
