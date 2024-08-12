@@ -131,8 +131,9 @@ export const logoutAccount = async () => {
   }
 }
 
-export const createLinkToken = async (user: User) => {
+export const createLinkToken = async (user: User, accessToken?: string) => {
   try {
+    // Base parameters for the link token
     const tokenParams = {
       user: {
         client_user_id: user.$id
@@ -141,13 +142,24 @@ export const createLinkToken = async (user: User) => {
       products: ['auth'] as Products[],
       language: 'en',
       country_codes: ['US'] as CountryCode[],
+    };
+
+    // Modify params for update mode if access_token is provided
+    if (accessToken) {
+      Object.assign(tokenParams, {
+        access_token: accessToken,
+        update: {
+          account_selection_enabled: true // Optionally enable account selection
+        }
+      });
     }
 
+    // Create link token with Plaid API
     const response = await plaidClient.linkTokenCreate(tokenParams);
-
-    return parseStringify({ linkToken: response.data.link_token })
+    return parseStringify({ linkToken: response.data.link_token });
   } catch (error) {
-    console.log(error);
+    console.error('Error creating Plaid link token:', error);
+    throw error; // Rethrow to handle the error appropriately in the calling code
   }
 }
 
